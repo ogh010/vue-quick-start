@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <title>퀵스타트뷰제이에스</title>
+</head>
+<style>   
+</style>
+<body>
+    <div id="account">
+        잔고 : <input type="text" v-model="balance">
+        <br/>
+        회원님의 등급 :
+        <span v-if="balance >= 10000">Gold</span>
+        <span v-else-if="balance >= 50000">Silver</span>
+        <span v-else-if="balance >= 200000">Bronze</span>
+        <span v-else>Basic</span>
+    </div>
+</body>
+<script type="text/javascript">
+new Vue({
+    el: "#account",
+    data: {balance : 0} , 
+})
+</script>
+</html>

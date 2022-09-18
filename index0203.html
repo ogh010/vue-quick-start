@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <title>퀵스타트뷰제이에스</title>
+</head>
+<style>   
+</style>
+<body>
+<div id="simple">
+    <input id="a" type="text" v-bind:value="message">
+    <br/>
+    <img v-bind:src="imagePath">
+</div>
+</body>
+<script type="text/javascript">
+let model = {
+    message : 'v-bind 디렉티브',
+    imagePath : "http://placeimg.com/640/480/animals"
+}
+new Vue({
+    el: "#simple",
+    data: model,
+    
+})
+</script>
+</html>

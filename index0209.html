@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <title>퀵스타트뷰제이에스</title>
+</head>
+<style>   
+#list{width: 400px; border: 1px solid rgb(0, 0, 0); border-collapse: collapse;}
+#list td,#list th{border: 1px solid black; text-align: center; }
+#list > thead > tr {background-color: #E38A8A;}
+</style>
+<body>
+    <div id="example">
+        <select id="regions">
+            <option disabled="disabled" selected>지역을 선택하세요</option>
+            <option v-for="(val, key, index) in regions" v-bind:value="key">{{++index}} : {{val}}</option>
+        </select>
+    </div>
+</body>
+<script type="text/javascript">
+let regions = {
+    "A" : "Asia",
+    "B" : "America",
+    "C" : "Europe",
+    "D" : "Africa",
+    "E" : "Oceania",
+}
+new Vue({
+    el: "#example",
+    data: {regions : regions} , 
+})
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <title>퀵스타트뷰제이에스</title>
+</head>
+<style>   
+</style>
+<body>
+<div id="simple">
+    <h2 v-html="message"></h2>
+</div>
+</body>
+<script type="text/javascript">
+let model = {
+    message : '첫 번째 vue.js 앱입니다'
+}
+new Vue({
+    el: "#simple",
+    data: model,
+    
+})
+</script>
+</html>

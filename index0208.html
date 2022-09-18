@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <title>퀵스타트뷰제이에스</title>
+</head>
+<style>   
+#list{width: 400px; border: 1px solid rgb(0, 0, 0); border-collapse: collapse;}
+#list td,#list th{border: 1px solid black; text-align: center; }
+#list > thead > tr {background-color: #E38A8A;}
+.divider{height: 2px; background-color: #997976;}
+</style>
+<body>
+    <div id="example">
+        <table id="list">
+            <thead>
+                <tr>
+                    <th>번호</th><th>이름</th><th>전화번호</th><th>주소</th>
+                </tr>
+            </thead>
+            <tbody id="contacts">
+                <template v-for="(contact, index) in contacts">
+                    <tr>
+                        <td>{{++index}}</td>
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.tel}}</td>
+                        <td>{{contact.address}}</td>
+                    </tr>
+                    <tr class="divider" v-if="index % 5 === 4">
+                        <td colspan="4"></td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script type="text/javascript">
+let model = {
+    "pageno" : 1,
+    "pagesize" : 10,
+    "totalcount" : 100,
+    "contacts" : [
+        {"no":100, "name": "학생1", "tel":"010-1234-1234", "address" : "서울"},
+        {"no":99, "name": "학생2", "tel":"010-1234-1234", "address" : "경기"},
+        {"no":98, "name": "학생3", "tel":"010-1234-1234", "address" : "부산"},
+        {"no":97, "name": "학생4", "tel":"010-1234-1234", "address" : "서울"},
+        {"no":96, "name": "학생5", "tel":"010-1234-1234", "address" : "대전"},
+        {"no":95, "name": "학생6", "tel":"010-1234-1234", "address" : "대구"},
+        {"no":94, "name": "학생7", "tel":"010-1234-1234", "address" : "울산"},
+        {"no":93, "name": "학생8", "tel":"010-1234-1234", "address" : "서울"},
+        {"no":92, "name": "학생9", "tel":"010-1234-1234", "address" : "서울"}
+    ],
+}
+new Vue({
+    el: "#example",
+    data: model , 
+})
+</script>
+</html>

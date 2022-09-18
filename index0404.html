@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <title>퀵스타트뷰제이에스</title>
+</head>
+<style>   
+
+</style>
+<body>
+    <div id="example" v-on:contextMenu.prevent="ctxStop">
+        <a href="https://www.naver.com/" @click="comfirmB">네이버</a>
+    </div>
+</body>
+<script type="text/javascript">
+
+new Vue({
+    el: "#example",
+    methods: {
+        ctxStop:function(e){
+            e.preventDefault();
+        },
+        comfirmB(e){
+            if(!confirm("네이버로 이동할까요?")){
+                e.preventDefault();
+            }
+        }
+    }
+})
+</script>
+</html>
