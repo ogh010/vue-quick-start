@@ -48,26 +48,59 @@ ul li.checked::before {
     <div id="todolistapp">
         <div id="header" class="header">
             <h2>⭐ Todo List App</h2>
-            <input type="text" class="input" id="task" placeholder="입력 후 엔터!">
-            <span class="addbutton">추가</span>
+            <input type="text" class="input" id="task" placeholder="입력 후 엔터!" v-model.trim="todo" v-on:keyup.enter="addTodo">
+            <span class="addbutton" v-on:click="addTodo">추가</span>
         </div>
         <ul id="todolist">
-            <li>
-                <span>Task 1</span>
-                <span class="close">&#x00D7;</span>
-            </li>
-            <li class="checked">
-                <span>Task2</span>
-                <span>( 완료 )</span>
-                <span class="close">&#x00D7;</span>
-            </li>
-            <li>
-                <span>Task3</span>
-                <span class="close">&#x00D7;</span>
+            <li v-for="(a,index) in todolist" v-bind:class="checked(a.done)" v-on:click="checkEvent(index)"> 
+                <span>{{a.todo}}</span>
+                <span v-if="a.done">(완료)</span>
+                <span class="close" v-on:click.stop="deleteTodo(a.id)">&#x00D7;</span>
             </li>
         </ul>
     </div>
 <script type="text/javascript">
+    let vm = new Vue({
+        el : "#todolistapp",
+        data:{
+            todo:"",
+            todolist : [
+                {id:1, todo:"영화보기", done:false},
+                {id:2, todo:"주말 산책", done:true},
+                {id:3, todo:"ES6 학습", done:false},
+                {id:4, todo:"잠실 야구장", done:false},
+            ]
+        },
+        methods:{
+            checkEvent(index){
+                this.todolist[index].done =! this.todolist[index].done
+            },
+            checked(done){
+                console.log(done);
+                if(done) return {checked:true}
+                else {checked:false}
+            },
+            addTodo(e){
+                if(this.todo.trim() !=""){
+                    this.todolist.push({id:new Date().getTime(), todo:this.todo.trim(), done:false});
+                    this.todo="";
+                }
+            },
+            deleteTodo(id){
+                let index = this.todolist.findIndex(function(item){
+                    return item.id === id;
+                })
+                this.todolist.splice(index,1)
+            },
+            doneToggle(id){
+                let index = this.todolist.findIndex(function(item){
+                    return item.id === id
+                })
+                this.todolist[index].done = !this.todolist[index].done
+            },
+
+        }
+    })
 
 </script>
 </body>
